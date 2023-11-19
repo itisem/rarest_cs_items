@@ -3,9 +3,6 @@ import json
 import time
 from datetime import datetime
 
-skinport_id_file = "item_ids.json"
-output_file = "output.json"
-
 def lookup_item(item_id):
 	url = f"https://float.skinport.com/api/assets?item_id={item_id}"
 	response = requests.get(url)
@@ -15,7 +12,7 @@ def lookup_item(item_id):
 def all_items():
 	item_counts = {}
 	i = 0 # used to pause after sending a bunch of requests
-	with open(skinport_id_file, encoding = "utf-8") as f:
+	with open("item_ids.json", encoding = "utf-8") as f:
 		contents = json.load(f)
 		total_items = len(contents)
 		for item in contents:
